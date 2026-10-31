@@ -295,7 +295,7 @@ export function FamilyGallery() {
           onClick={() => setSelectedMember(null)}
         >
           <div
-            className="relative max-w-lg w-full rounded-3xl bg-ivory border-2 border-gold shadow-royal-lg overflow-hidden"
+            className="relative max-w-lg w-full max-h-[90vh] overflow-y-auto rounded-3xl bg-ivory border-2 border-gold shadow-royal-lg"
             onClick={(e) => e.stopPropagation()}
           >
             <button

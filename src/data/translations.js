@@ -76,6 +76,23 @@ export const translations = {
       pastWeddingMessage:
         'Thank you for keeping Shahanaj & Souvik in your heartfelt prayers and warm wishes.',
     },
+    saveTheDate: {
+      eyebrow: 'Mark Your Calendar',
+      title: 'Save the Date',
+      subtitle:
+        'Add Shahanaj & Souvik’s wedding celebrations directly to your Google Calendar or Apple Calendar with automatic reminders.',
+      selectCeremonyLabel: 'Choose Ceremony to Save',
+      allCeremoniesTab: 'All 3 Days (28–30 Nov)',
+      weddingTab: 'Wedding & Biday (30 Nov)',
+      mehendiTab: 'Mehendi (28 Nov)',
+      haldiTab: 'Haldi (29 Nov)',
+      googleCalendarBtn: 'Add to Google Calendar',
+      appleCalendarBtn: 'Add to Apple Calendar',
+      appleCalendarSub: 'Works on iPhone, iPad, Mac & Outlook (.ics)',
+      googleCalendarSub: 'Opens directly in Google Calendar',
+      downloadedToast: 'Calendar file (.ics) ready! Open it to add to Apple Calendar.',
+      venueNote: 'Our Home • Purba Kalikapur, Trimohini, Hili, West Bengal',
+    },
     welcomeScreen: {
       bismillahArabic: 'بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ',
       bismillah: 'Bismillahir Rahmanir Rahim',
@@ -93,19 +110,26 @@ export const translations = {
     },
     story: {
       eyebrow: 'Two Hearts, One Sacred Bond',
-      title: 'A Beautiful Beginning',
+      title: 'Meet the Bride & Groom',
+      subtitle:
+        'Stepping into a blessed lifelong journey together with the prayers of our families.',
       mainQuote:
         'Some journeys are made more beautiful when two hearts choose to walk together. With the blessings of Allah and the love of our families, we look forward to beginning this wonderful new chapter.',
       secondaryParagraph:
         'Guided by faith, mutual respect, and the warmth of our homes, we step toward a lifetime of companionship. Nothing brings us greater happiness than sharing the joy of these sacred days with our cherished relatives, friends, and loved ones.',
       brideLabel: 'The Bride',
       brideName: 'Shahanaj',
-      brideParentsLine: 'Beloved daughter of Nurjjaman Mondal & Sujata Bibi',
-      brideBlessing: 'Cherished daughter, stepping into a new chapter with grace and gratitude.',
+      brideParentsLine: 'Beloved daughter of Nurjjaman Mondal (Baba) & Sujata Bibi (Maa)',
+      brideFamilyLine: 'Sister of Sahin Mondal (Dada) & Surovi Najmin (Bhabi) • Fupi of Arhan',
+      brideBlessing:
+        'Stepping into a new chapter with grace, gratitude, and the endless love of my family. Please keep us in your heartfelt prayers.',
       groomLabel: 'The Groom',
       groomName: 'Souvik',
       groomParentsLine: 'Stepping forward with love, honour, and family blessings',
-      groomBlessing: 'Beginning a lifelong promise of love, warmth, and togetherness.',
+      groomFamilyLine: 'Welcomed with warmth and joy by the entire Mondal family',
+      groomBlessing:
+        'Beginning a lifelong promise of love, mutual respect, warmth, and togetherness with Shahanaj.',
+      viewPortraitHint: 'Tap portrait to view full photo',
       portraitNote: 'Together in love, faith, and family blessings • Shahanaj & Souvik',
     },
     family: {
@@ -467,6 +491,23 @@ export const translations = {
       pastWeddingMessage:
         'শাহানাজ ও সৌভিককে আপনাদের আন্তরিক দোয়া ও ভালোবাসায় রাখার জন্য অশেষ কৃতজ্ঞতা।',
     },
+    saveTheDate: {
+      eyebrow: 'দিনটি স্মরণে রাখুন',
+      title: 'ক্যালেন্ডারে দিনটি সংরক্ষণ করুন (Save the Date)',
+      subtitle:
+        'স্বয়ংক্রিয় রিমাইন্ডারসহ শাহানাজ ও সৌভিকের বিবাহের অনুষ্ঠানসূচি আপনার গুগল ক্যালেন্ডার অথবা অ্যাপল ক্যালেন্ডারে যুক্ত করুন।',
+      selectCeremonyLabel: 'কোন অনুষ্ঠানটি সংরক্ষণ করতে চান নির্বাচন করুন',
+      allCeremoniesTab: 'সম্পূর্ণ ৩ দিন (২৮–৩০ নভেম্বর)',
+      weddingTab: 'বিবাহ ও বিদায় (৩০ নভেম্বর)',
+      mehendiTab: 'মেহেন্দি (২৮ নভেম্বর)',
+      haldiTab: 'হলুদ (২৯ নভেম্বর)',
+      googleCalendarBtn: 'গুগল ক্যালেন্ডারে যুক্ত করুন',
+      appleCalendarBtn: 'অ্যাপল ক্যালেন্ডারে যুক্ত করুন',
+      appleCalendarSub: 'আইফোন, আইপ্যাড, ম্যাক ও আউটলুকে সমর্থিত (.ics)',
+      googleCalendarSub: 'সরাসরি গুগল ক্যালেন্ডার অ্যাপে খুলবে',
+      downloadedToast: 'ক্যালেন্ডার ফাইল (.ics) ডাউনলোড হয়েছে! অ্যাপল ক্যালেন্ডারে যোগ করতে ফাইলটি খুলুন।',
+      venueNote: 'নিজ বাসস্থান • পূর্ব কালিকাপুর, ত্রিমোহিনী, হিলি, পশ্চিমবঙ্গ',
+    },
     welcomeScreen: {
       bismillahArabic: 'بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ',
       bismillah: 'বিসমিল্লাহির রাহমানির রাহিম',
@@ -484,19 +525,26 @@ export const translations = {
     },
     story: {
       eyebrow: 'দুটি হৃদয়, এক পবিত্র বন্ধন',
-      title: 'একটি সুন্দর সূচনা',
+      title: 'কনে ও বরের পরিচিতি',
+      subtitle:
+        'পরিবারের দোয়া ও ভালোবাসাকে পাথেয় করে নতুন জীবনের পথে শাহানাজ ও সৌভিক।',
       mainQuote:
         'কিছু পথচলা আরও সুন্দর হয়ে ওঠে যখন দুটি হৃদয় একসাথে চলার অঙ্গীকার করে। আল্লাহর অশেষ রহমত এবং আমাদের দুই পরিবারের ভালোবাসাকে পাথেয় করে আমরা জীবনের এই নতুন অধ্যায় শুরু করতে চলেছি।',
       secondaryParagraph:
         'বিশ্বাস, পারস্পরিক শ্রদ্ধা এবং পারিবারিক স্নেহের ছায়ায় আমরা এক নতুন জীবনের পথে পা বাড়াচ্ছি। আমাদের এই পবিত্র ও আনন্দময় মুহূর্তগুলো আত্মীয়-স্বজন, বন্ধু-বান্ধব এবং প্রিয়জনদের সঙ্গে ভাগ করে নেওয়ার চেয়ে বড় আনন্দ আর কিছু হতে পারে না।',
-      brideLabel: 'কনে',
+      brideLabel: 'বিবাহের কনে',
       brideName: 'শাহানাজ',
-      brideParentsLine: 'নূরজ্জামান মণ্ডল ও সুজাতা বিবির স্নেহধন্যা কন্যা',
-      brideBlessing: 'স্নেহধন্যা কন্যা, বিনয় ও কৃতজ্ঞতার সাথে জীবনের নতুন অধ্যায়ে পদার্পণ।',
-      groomLabel: 'বর',
+      brideParentsLine: 'নূরজ্জামান মণ্ডল (বাবা) ও সুজাতা বিবি (মা)-এর আদরের কন্যা',
+      brideFamilyLine: 'সাহিন মণ্ডল (দাদা) ও সুরভী নাজমিন (ভাবি)-এর স্নেহের বোন • ছোট্ট আরহানের ফুপি',
+      brideBlessing:
+        'পরিবারের সকলের অকৃত্রিম ভালোবাসা ও দোয়া নিয়ে জীবনের নতুন অধ্যায়ে পা রাখছি। আমাদের জন্য দোয়া করবেন।',
+      groomLabel: 'বিবাহের বর',
       groomName: 'সৌভিক',
-      groomParentsLine: 'পরিবারের দোয়া ও ভালোবাসায় নতুন জীবনের পথে',
-      groomBlessing: 'ভালোবাসা, শ্রদ্ধা ও আজীবন একসাথে চলার পবিত্র অঙ্গীকার।',
+      groomParentsLine: 'ভালোবাসা, শ্রদ্ধা ও পরিবারের আশীর্বাদে নতুন জীবনের পথে',
+      groomFamilyLine: 'সমগ্র মণ্ডল পরিবারের স্নেহ ও আন্তরিকতায় বরণীয়',
+      groomBlessing:
+        'ভালোবাসা, পারস্পরিক শ্রদ্ধা ও আজীবন একসাথে পথ চলার পবিত্র অঙ্গীকার নিয়ে নতুন জীবন শুরু।',
+      viewPortraitHint: 'সম্পূর্ণ ছবি দেখতে ক্লিক করুন',
       portraitNote: 'ভালোবাসা, বিশ্বাস ও পরিবারের দোয়ায় একসাথে • শাহানাজ ও সৌভিক',
     },
     family: {

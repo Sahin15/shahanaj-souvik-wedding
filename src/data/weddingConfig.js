@@ -22,6 +22,8 @@ export const weddingConfig = {
       en: 'S & S',
       bn: 'শা ও সৌ',
     },
+    bridePhoto: '/images/family/shahanaj.jpg',
+    groomPhoto: '/images/family/souvik.jpg',
     hosts: {
       father: {
         en: 'Nurjjaman Mondal',

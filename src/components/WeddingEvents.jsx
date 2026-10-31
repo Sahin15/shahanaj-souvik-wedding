@@ -551,236 +551,247 @@ export function WeddingEvents() {
           <div
             key={`scroll-${doorAnimationKey}`}
             onClick={(e) => e.stopPropagation()}
-            className="relative z-[92] max-w-4xl w-full my-auto rounded-3xl bg-ivory text-ink border-2 border-gold shadow-2xl overflow-hidden animate-royal-scroll max-h-[92vh] flex flex-col"
+            className="relative z-[92] max-w-4xl w-full my-auto rounded-2xl sm:rounded-3xl bg-ivory text-ink border-2 border-gold shadow-2xl overflow-hidden animate-royal-scroll max-h-[92vh] flex flex-col"
           >
-            {/* Top Royal Burgundy Header Bar with Event Switcher Tabs */}
-            <div className="relative bg-burgundy-deep bg-islamic-pattern-gold text-ivory px-4 sm:px-8 pt-5 pb-5 border-b-2 border-gold shrink-0">
-              <div className="flex items-center justify-between gap-2 mb-4">
-                {/* Event Switcher Pills */}
-                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                  {weddingConfig.events.map((ev, idx) => {
-                    const isCurrent = idx === selectedEventIndex;
-                    return (
-                      <button
-                        key={ev.id}
-                        type="button"
-                        onClick={() => openEventModal(idx)}
-                        className={`px-3.5 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold border transition-all ${
-                          isCurrent
-                            ? 'bg-gold text-burgundy-deep border-ivory shadow-md'
-                            : 'bg-burgundy text-ivory border-gold/70 hover:bg-gold/25'
-                        }`}
-                      >
-                        {t.events.items[ev.id].name}
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {/* Prev / Next / Close Controls */}
-                <div className="flex items-center gap-1.5 shrink-0">
-                  <button
-                    type="button"
-                    onClick={showPrevEvent}
-                    aria-label="Previous ceremony"
-                    className="p-2 rounded-full bg-burgundy hover:bg-gold text-ivory hover:text-burgundy-deep border border-gold/80 transition-colors shadow-sm"
-                  >
-                    <ChevronLeft className="w-4 h-4" aria-hidden="true" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={showNextEvent}
-                    aria-label="Next ceremony"
-                    className="p-2 rounded-full bg-burgundy hover:bg-gold text-ivory hover:text-burgundy-deep border border-gold/80 transition-colors shadow-sm"
-                  >
-                    <ChevronRight className="w-4 h-4" aria-hidden="true" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={closeEventModal}
-                    aria-label={t.events.modal.closeLabel}
-                    className="p-2 rounded-full bg-gold hover:bg-gold-light text-burgundy-deep border border-ivory/70 transition-colors ml-1 shadow-sm"
-                  >
-                    <X className="w-5 h-5" aria-hidden="true" />
-                  </button>
-                </div>
+            {/* Compact Sticky Top Navigation Bar (Only Tabs + Close stay fixed) */}
+            <div className="relative bg-burgundy-deep text-ivory px-3 sm:px-6 py-2.5 sm:py-3 border-b border-gold/70 shrink-0 flex items-center justify-between gap-2">
+              {/* Event Switcher Pills (Never clipped) */}
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                {weddingConfig.events.map((ev, idx) => {
+                  const isCurrent = idx === selectedEventIndex;
+                  const fullLabel = t.events.items[ev.id].name;
+                  const shortMobileLabel =
+                    ev.id === 'nikah' || ev.id === 'wedding'
+                      ? language === 'bn'
+                        ? 'বিবাহ ও বিদায়'
+                        : 'Wedding & Biday'
+                      : fullLabel;
+                  return (
+                    <button
+                      key={ev.id}
+                      type="button"
+                      onClick={() => openEventModal(idx)}
+                      className={`px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-semibold border transition-all whitespace-nowrap ${
+                        isCurrent
+                          ? 'bg-gold text-burgundy-deep border-ivory shadow-sm'
+                          : 'bg-burgundy/90 text-ivory border-gold/60 hover:bg-gold/25'
+                      }`}
+                    >
+                      <span className="sm:hidden">{shortMobileLabel}</span>
+                      <span className="hidden sm:inline">{fullLabel}</span>
+                    </button>
+                  );
+                })}
               </div>
 
-              {/* Ceremony Hero Summary inside Modal Header */}
-              <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-center sm:text-left">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-ivory border-2 border-gold flex items-center justify-center shrink-0 shadow-lg">
-                  <EventIllustration
-                    type={activeEventConfig.iconType}
-                    className="w-14 h-14 sm:w-16 sm:h-16"
-                  />
-                </div>
-
-                <div className="flex-1">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-burgundy border border-gold/80 text-gold-light text-xs font-semibold uppercase tracking-wider">
-                    <Sparkles className="w-3 h-3" aria-hidden="true" />
-                    <span>{activeEventCopy.badge}</span>
-                  </span>
-
-                  <h3 className="mt-1.5 font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-ivory">
-                    {activeEventCopy.name}
-                  </h3>
-
-                  <div className="mt-2 flex flex-wrap items-center justify-center sm:justify-start gap-2.5 text-xs sm:text-sm">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-burgundy border border-gold/70 text-ivory font-semibold">
-                      <Calendar className="w-3.5 h-3.5 text-gold-light" aria-hidden="true" />
-                      {activeEventCopy.date} ({activeEventCopy.day})
-                    </span>
-
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-gold text-burgundy-deep font-bold shadow-sm">
-                      <Clock className="w-3.5 h-3.5" aria-hidden="true" />
-                      {activeEventConfig.confirmedTime[language]}
-                    </span>
-                  </div>
-                </div>
+              {/* Prev / Next (Desktop/Tablet) + Close Control */}
+              <div className="flex items-center gap-1.5 shrink-0">
+                <button
+                  type="button"
+                  onClick={showPrevEvent}
+                  aria-label="Previous ceremony"
+                  className="hidden sm:inline-flex p-2 rounded-full bg-burgundy hover:bg-gold text-ivory hover:text-burgundy-deep border border-gold/80 transition-colors shadow-sm"
+                >
+                  <ChevronLeft className="w-4 h-4" aria-hidden="true" />
+                </button>
+                <button
+                  type="button"
+                  onClick={showNextEvent}
+                  aria-label="Next ceremony"
+                  className="hidden sm:inline-flex p-2 rounded-full bg-burgundy hover:bg-gold text-ivory hover:text-burgundy-deep border border-gold/80 transition-colors shadow-sm"
+                >
+                  <ChevronRight className="w-4 h-4" aria-hidden="true" />
+                </button>
+                <button
+                  type="button"
+                  onClick={closeEventModal}
+                  aria-label={t.events.modal.closeLabel}
+                  className="p-1.5 sm:p-2 rounded-full bg-gold hover:bg-gold-light text-burgundy-deep border border-ivory/70 transition-colors shadow-sm"
+                >
+                  <X className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
+                </button>
               </div>
             </div>
 
-            {/* Scrollable Body of the Ceremony Scroll */}
-            <div className="p-5 sm:p-8 overflow-y-auto space-y-7 bg-ivory">
-              {/* Long Poetic Description */}
-              <div className="relative rounded-2xl bg-champagne/30 border border-gold/55 p-5 sm:p-6">
-                <ArabesqueCorner
-                  position="top-left"
-                  className="pointer-events-none absolute top-2 left-2 w-8 h-8 opacity-70"
-                />
-                <ArabesqueCorner
-                  position="bottom-right"
-                  className="pointer-events-none absolute bottom-2 right-2 w-8 h-8 opacity-70"
-                />
-                <p className="font-heading text-lg sm:text-xl md:text-2xl text-burgundy leading-relaxed font-medium">
-                  {activeEventCopy.longDescription}
-                </p>
-              </div>
-
-              {/* Two-Column Grid: Step-by-Step Timeline + Highlights & Palette */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
-                {/* Left 7 Cols: Step-by-Step Program Timeline */}
-                <div className="lg:col-span-7">
-                  <h4 className="font-heading text-xl sm:text-2xl font-bold text-burgundy flex items-center gap-2 mb-4">
-                    <Clock className="w-5 h-5 text-gold-dark" aria-hidden="true" />
-                    <span>{t.events.modal.scheduleTitle}</span>
-                  </h4>
-
-                  <div className="relative pl-6 border-l-2 border-gold/60 space-y-5">
-                    {activeEventCopy.timeline.map((step, sIdx) => (
-                      <div key={sIdx} className="relative group">
-                        {/* Glowing Gold Timeline Node */}
-                        <span
-                          className="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-burgundy border-2 border-gold shadow-sm"
-                          aria-hidden="true"
-                        />
-
-                        <div className="rounded-2xl bg-ivory-soft border border-gold/45 p-4 shadow-sm hover:border-burgundy/50 transition-colors">
-                          <span className="inline-block px-2.5 py-0.5 rounded-md bg-burgundy text-gold-light text-xs font-semibold tracking-wide">
-                            {step.time}
-                          </span>
-                          <h5 className="mt-1.5 font-heading text-lg sm:text-xl font-bold text-burgundy">
-                            {step.title}
-                          </h5>
-                          <p className="mt-1 text-xs sm:text-sm text-ink/80 leading-relaxed">
-                            {step.detail}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Right 5 Cols: Special Highlights, Dress Palette & Hosts Note */}
-                <div className="lg:col-span-5 space-y-5">
-                  {/* Special Highlights */}
-                  <div className="rounded-2xl bg-ivory-soft border border-gold/50 p-5">
-                    <h4 className="font-heading text-lg sm:text-xl font-bold text-burgundy flex items-center gap-2 mb-3">
-                      <Sparkles className="w-4 h-4 text-gold-dark" aria-hidden="true" />
-                      <span>{t.events.modal.highlightsTitle}</span>
-                    </h4>
-                    <ul className="space-y-2.5 text-xs sm:text-sm text-ink/90">
-                      {activeEventCopy.highlights.map((hl, hIdx) => (
-                        <li key={hIdx} className="flex items-start gap-2">
-                          <CheckCircle2
-                            className="w-4 h-4 text-emerald-accent shrink-0 mt-0.5"
-                            aria-hidden="true"
-                          />
-                          <span>{hl}</span>
-                        </li>
-                      ))}
-                    </ul>
+            {/* Unified Scrollable Body (Hero Banner + Content + Footer Actions scroll together smoothly) */}
+            <div className="flex-1 overflow-y-auto overscroll-contain bg-ivory">
+              {/* Ceremony Hero Summary Banner (Scrolls naturally with content) */}
+              <div className="relative bg-burgundy-deep bg-islamic-pattern-gold text-ivory px-4 sm:px-8 py-4 sm:py-6 border-b-2 border-gold">
+                <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-center sm:text-left">
+                  <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl bg-ivory border-2 border-gold flex items-center justify-center shrink-0 shadow-lg">
+                    <EventIllustration
+                      type={activeEventConfig.iconType}
+                      className="w-12 h-12 sm:w-16 sm:h-16"
+                    />
                   </div>
 
-                  {/* Color Palette & Attire Guide */}
-                  <div className="rounded-2xl bg-ivory-soft border border-gold/50 p-5">
-                    <h4 className="font-heading text-lg sm:text-xl font-bold text-burgundy flex items-center gap-2 mb-2.5">
-                      <Palette className="w-4 h-4 text-gold-dark" aria-hidden="true" />
-                      <span>{t.events.modal.attireTitle}</span>
-                    </h4>
+                  <div className="flex-1">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-burgundy border border-gold/80 text-gold-light text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+                      <Sparkles className="w-3 h-3 shrink-0" aria-hidden="true" />
+                      <span>{activeEventCopy.badge}</span>
+                    </span>
 
-                    {/* Color Swatches */}
-                    <div className="flex items-center gap-2.5 my-3">
-                      {activeEventConfig.swatches.map((hex, cIdx) => (
-                        <span
-                          key={cIdx}
-                          className="w-8 h-8 rounded-full border-2 border-gold shadow-sm"
-                          style={{ backgroundColor: hex }}
-                          title={hex}
-                        />
-                      ))}
-                      <span className="text-xs font-medium text-ink/75 ml-1">
-                        {activeEventCopy.paletteNote}
+                    <h3 className="mt-1 sm:mt-1.5 font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-ivory leading-tight">
+                      {activeEventCopy.name}
+                    </h3>
+
+                    <div className="mt-2 flex flex-wrap items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-burgundy border border-gold/70 text-ivory font-semibold">
+                        <Calendar className="w-3.5 h-3.5 text-gold-light shrink-0" aria-hidden="true" />
+                        {activeEventCopy.date} ({activeEventCopy.day})
+                      </span>
+
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-gold text-burgundy-deep font-bold shadow-sm">
+                        <Clock className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+                        {activeEventConfig.confirmedTime[language]}
                       </span>
                     </div>
-
-                    <p className="text-xs sm:text-sm text-ink/85 leading-relaxed">
-                      {activeEventCopy.attireSuggestion}
-                    </p>
-                  </div>
-
-                  {/* Warm Note from Hosts Nurjjaman Mondal & Sujata Bibi */}
-                  <div className="rounded-2xl bg-gradient-to-br from-burgundy-deep to-burgundy text-ivory p-5 border border-gold">
-                    <p className="text-xs uppercase tracking-wider text-gold-light font-semibold">
-                      {t.events.modal.hostsNoteTitle}
-                    </p>
-                    <p className="mt-1.5 text-xs sm:text-sm text-champagne leading-relaxed">
-                      {t.events.modal.hostsNoteBody}
-                    </p>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Modal Footer: Venue Address + Directions & Add to Calendar Buttons */}
-            <div className="px-5 sm:px-8 py-4 bg-champagne/40 border-t border-gold/55 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
-              <div className="flex items-center gap-2 text-xs sm:text-sm text-ink font-medium">
-                <MapPin className="w-4 h-4 text-burgundy shrink-0" aria-hidden="true" />
-                <span>{t.events.venueValue}</span>
+              {/* Main Ceremony Details Content */}
+              <div className="p-4 sm:p-8 space-y-6 sm:space-y-7">
+                {/* Long Poetic Description */}
+                <div className="relative rounded-2xl bg-champagne/30 border border-gold/55 p-4 sm:p-6">
+                  <ArabesqueCorner
+                    position="top-left"
+                    className="pointer-events-none absolute top-2 left-2 w-7 h-7 sm:w-8 sm:h-8 opacity-70"
+                  />
+                  <ArabesqueCorner
+                    position="bottom-right"
+                    className="pointer-events-none absolute bottom-2 right-2 w-7 h-7 sm:w-8 sm:h-8 opacity-70"
+                  />
+                  <p className="font-heading text-base sm:text-xl md:text-2xl text-burgundy leading-relaxed font-medium">
+                    {activeEventCopy.longDescription}
+                  </p>
+                </div>
+
+                {/* Two-Column Grid: Step-by-Step Timeline + Highlights & Palette */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
+                  {/* Left 7 Cols: Step-by-Step Program Timeline */}
+                  <div className="lg:col-span-7">
+                    <h4 className="font-heading text-xl sm:text-2xl font-bold text-burgundy flex items-center gap-2 mb-4">
+                      <Clock className="w-5 h-5 text-gold-dark" aria-hidden="true" />
+                      <span>{t.events.modal.scheduleTitle}</span>
+                    </h4>
+
+                    <div className="relative pl-6 border-l-2 border-gold/60 space-y-4 sm:space-y-5">
+                      {activeEventCopy.timeline.map((step, sIdx) => (
+                        <div key={sIdx} className="relative group">
+                          {/* Glowing Gold Timeline Node */}
+                          <span
+                            className="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-burgundy border-2 border-gold shadow-sm"
+                            aria-hidden="true"
+                          />
+
+                          <div className="rounded-2xl bg-ivory-soft border border-gold/45 p-3.5 sm:p-4 shadow-sm hover:border-burgundy/50 transition-colors">
+                            <span className="inline-block px-2.5 py-0.5 rounded-md bg-burgundy text-gold-light text-xs font-semibold tracking-wide">
+                              {step.time}
+                            </span>
+                            <h5 className="mt-1.5 font-heading text-lg sm:text-xl font-bold text-burgundy">
+                              {step.title}
+                            </h5>
+                            <p className="mt-1 text-xs sm:text-sm text-ink/80 leading-relaxed">
+                              {step.detail}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Right 5 Cols: Special Highlights, Dress Palette & Hosts Note */}
+                  <div className="lg:col-span-5 space-y-4 sm:space-y-5">
+                    {/* Special Highlights */}
+                    <div className="rounded-2xl bg-ivory-soft border border-gold/50 p-4 sm:p-5">
+                      <h4 className="font-heading text-lg sm:text-xl font-bold text-burgundy flex items-center gap-2 mb-3">
+                        <Sparkles className="w-4 h-4 text-gold-dark" aria-hidden="true" />
+                        <span>{t.events.modal.highlightsTitle}</span>
+                      </h4>
+                      <ul className="space-y-2.5 text-xs sm:text-sm text-ink/90">
+                        {activeEventCopy.highlights.map((hl, hIdx) => (
+                          <li key={hIdx} className="flex items-start gap-2">
+                            <CheckCircle2
+                              className="w-4 h-4 text-emerald-accent shrink-0 mt-0.5"
+                              aria-hidden="true"
+                            />
+                            <span>{hl}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Color Palette & Attire Guide */}
+                    <div className="rounded-2xl bg-ivory-soft border border-gold/50 p-4 sm:p-5">
+                      <h4 className="font-heading text-lg sm:text-xl font-bold text-burgundy flex items-center gap-2 mb-2.5">
+                        <Palette className="w-4 h-4 text-gold-dark" aria-hidden="true" />
+                        <span>{t.events.modal.attireTitle}</span>
+                      </h4>
+
+                      {/* Color Swatches */}
+                      <div className="flex items-center gap-2.5 my-3">
+                        {activeEventConfig.swatches.map((hex, cIdx) => (
+                          <span
+                            key={cIdx}
+                            className="w-8 h-8 rounded-full border-2 border-gold shadow-sm shrink-0"
+                            style={{ backgroundColor: hex }}
+                            title={hex}
+                          />
+                        ))}
+                        <span className="text-xs font-medium text-ink/75 ml-1">
+                          {activeEventCopy.paletteNote}
+                        </span>
+                      </div>
+
+                      <p className="text-xs sm:text-sm text-ink/85 leading-relaxed">
+                        {activeEventCopy.attireSuggestion}
+                      </p>
+                    </div>
+
+                    {/* Warm Note from Hosts Nurjjaman Mondal & Sujata Bibi */}
+                    <div className="rounded-2xl bg-gradient-to-br from-burgundy-deep to-burgundy text-ivory p-4 sm:p-5 border border-gold">
+                      <p className="text-xs uppercase tracking-wider text-gold-light font-semibold">
+                        {t.events.modal.hostsNoteTitle}
+                      </p>
+                      <p className="mt-1.5 text-xs sm:text-sm text-champagne leading-relaxed">
+                        {t.events.modal.hostsNoteBody}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-2.5 w-full sm:w-auto">
-                {weddingConfig.venue.directionsUrl && (
+              {/* Modal Footer: Venue Address + Directions & Add to Calendar Buttons (Inside Scroll Flow) */}
+              <div className="px-4 sm:px-8 py-4 sm:py-5 bg-champagne/40 border-t border-gold/55 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div className="flex items-center gap-2 text-xs sm:text-sm text-ink font-medium text-center sm:text-left">
+                  <MapPin className="w-4 h-4 text-burgundy shrink-0" aria-hidden="true" />
+                  <span>{t.events.venueValue}</span>
+                </div>
+
+                <div className="flex flex-col xs:flex-row flex-wrap items-center justify-center gap-2.5 w-full sm:w-auto">
+                  {weddingConfig.venue.directionsUrl && (
+                    <a
+                      href={weddingConfig.venue.directionsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full xs:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-burgundy hover:bg-burgundy-deep text-ivory text-xs sm:text-sm font-medium border border-gold/60 shadow-sm transition-colors"
+                    >
+                      <Navigation className="w-3.5 h-3.5 text-gold-light" aria-hidden="true" />
+                      <span>{t.events.modal.directionsBtn}</span>
+                    </a>
+                  )}
+
                   <a
-                    href={weddingConfig.venue.directionsUrl}
+                    href={buildEventCalendarUrl(activeEventConfig, activeEventCopy)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-burgundy hover:bg-burgundy-deep text-ivory text-xs sm:text-sm font-medium border border-gold/60 shadow-sm transition-colors"
+                    className="w-full xs:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-ivory hover:bg-champagne/60 text-burgundy text-xs sm:text-sm font-medium border border-gold/70 shadow-sm transition-colors"
                   >
-                    <Navigation className="w-3.5 h-3.5 text-gold-light" aria-hidden="true" />
-                    <span>{t.events.modal.directionsBtn}</span>
+                    <CalendarPlus className="w-3.5 h-3.5 text-gold-dark" aria-hidden="true" />
+                    <span>{t.events.modal.calendarBtn}</span>
                   </a>
-                )}
-
-                <a
-                  href={buildEventCalendarUrl(activeEventConfig, activeEventCopy)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-ivory hover:bg-champagne/60 text-burgundy text-xs sm:text-sm font-medium border border-gold/70 shadow-sm transition-colors"
-                >
-                  <CalendarPlus className="w-3.5 h-3.5 text-gold-dark" aria-hidden="true" />
-                  <span>{t.events.modal.calendarBtn}</span>
-                </a>
+                </div>
               </div>
             </div>
           </div>

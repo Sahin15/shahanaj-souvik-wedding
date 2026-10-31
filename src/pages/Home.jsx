@@ -4,6 +4,7 @@ import { WelcomeScreen } from '../components/WelcomeScreen';
 import { Hero } from '../components/Hero';
 import { PersonalInvitationBanner } from '../components/PersonalInvitationBanner';
 import { CountdownTimer } from '../components/CountdownTimer';
+import { SaveTheDateSection } from '../components/SaveTheDateSection';
 import { CoupleStory } from '../components/CoupleStory';
 import { FamilyGallery } from '../components/FamilyGallery';
 import { WeddingEvents } from '../components/WeddingEvents';
@@ -23,6 +24,7 @@ export function Home() {
         <Hero />
         <PersonalInvitationBanner />
         <CountdownTimer />
+        <SaveTheDateSection />
         <CoupleStory />
         <FamilyGallery />
         <WeddingEvents />
