@@ -13,6 +13,10 @@ export function CountdownTimer() {
   );
   const [revealRef, isVisible] = useRevealOnScroll();
 
+  const effectiveStatus = weddingConfig.postWeddingMode?.enabled
+    ? 'past'
+    : status;
+
   const units = [
     { key: 'days', value: formatNum(days, 2), label: t.countdown.days },
     { key: 'hours', value: formatNum(hours, 2), label: t.countdown.hours },
@@ -23,7 +27,7 @@ export function CountdownTimer() {
   return (
     <section
       aria-label={t.countdown.title}
-      className="relative py-10 sm:py-14 bg-gradient-to-b from-champagne/45 via-ivory to-ivory border-y border-gold/35"
+      className="relative py-10 sm:py-14 bg-gradient-to-b from-champagne/45 via-ivory to-ivory border-y border-gold/35 overflow-hidden"
     >
       <div
         ref={revealRef}
@@ -40,7 +44,7 @@ export function CountdownTimer() {
           {t.countdown.eyebrow}
         </p>
 
-        <h2 className="mt-1 font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-burgundy">
+        <h2 className="mt-1 font-heading text-[clamp(1.6rem,4.5vw,2.5rem)] font-bold text-burgundy">
           {t.countdown.title}
         </h2>
 
@@ -48,7 +52,7 @@ export function CountdownTimer() {
           {t.countdown.subtitle}
         </p>
 
-        {status === 'counting' ? (
+        {effectiveStatus === 'counting' ? (
           <div className="mt-6 sm:mt-8">
             {/* 4 Responsive Countdown Cards in a Single Row on Mobile & Desktop */}
             <div
@@ -122,12 +126,12 @@ export function CountdownTimer() {
           <div className="mt-8 max-w-2xl mx-auto rounded-2xl bg-burgundy text-ivory p-8 sm:p-10 border-2 border-gold shadow-royal-lg">
             <Sparkles className="w-8 h-8 text-gold-light mx-auto mb-3" aria-hidden="true" />
             <h3 className="font-heading text-2xl sm:text-3xl font-bold text-ivory">
-              {status === 'wedding-day'
+              {effectiveStatus === 'wedding-day'
                 ? t.countdown.weddingDayTitle
                 : t.countdown.pastWeddingTitle}
             </h3>
             <p className="mt-3 text-sm sm:text-base text-champagne leading-relaxed">
-              {status === 'wedding-day'
+              {effectiveStatus === 'wedding-day'
                 ? t.countdown.weddingDayMessage
                 : t.countdown.pastWeddingMessage}
             </p>

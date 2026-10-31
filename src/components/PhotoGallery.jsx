@@ -17,6 +17,7 @@ export function PhotoGallery() {
   const [revealRef, isVisible] = useRevealOnScroll();
   const [activeIndex, setActiveIndex] = useState(null);
   const [failedIds, setFailedIds] = useState({});
+  const [touchStartX, setTouchStartX] = useState(null);
 
   const isLightboxOpen = activeIndex !== null;
 
@@ -199,10 +200,25 @@ export function PhotoGallery() {
             </button>
           </div>
 
-          {/* Center Image Stage with Prev/Next Controls */}
+          {/* Center Image Stage with Prev/Next Controls & Mobile Touch Swipe */}
           <div
             className="relative flex-1 flex items-center justify-center my-4 max-w-5xl w-full mx-auto"
             onClick={(e) => e.stopPropagation()}
+            onTouchStart={(e) => {
+              if (e.touches && e.touches.length === 1) {
+                setTouchStartX(e.touches[0].clientX);
+              }
+            }}
+            onTouchEnd={(e) => {
+              if (touchStartX === null || !e.changedTouches?.length) return;
+              const deltaX = e.changedTouches[0].clientX - touchStartX;
+              if (deltaX > 45) {
+                showPrevious();
+              } else if (deltaX < -45) {
+                showNext();
+              }
+              setTouchStartX(null);
+            }}
           >
             <button
               type="button"

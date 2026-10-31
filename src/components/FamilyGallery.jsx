@@ -29,25 +29,24 @@ export function FamilyGallery() {
       count: getCountForCategory('parents'),
     },
     {
+      id: 'bride',
+      label: t.family.filterBride,
+      count: getCountForCategory('bride'),
+    },
+    {
       id: 'brother-family',
       label: t.family.filterBrotherFamily,
       count: getCountForCategory('brother-family'),
     },
   ];
 
-  const topRowMembers = familyMembers.filter((m) =>
-    m.categories?.includes('parents')
-  );
-  const bottomRowMembers = familyMembers.filter((m) =>
-    m.categories?.includes('brother-family')
-  );
+  const topRowMembers = familyMembers.filter((m) => m.tier === 'top');
+  const bottomRowMembers = familyMembers.filter((m) => m.tier === 'bottom');
 
   const filteredMembers =
     activeFilter === 'all'
       ? [...topRowMembers, ...bottomRowMembers]
-      : activeFilter === 'parents'
-      ? topRowMembers
-      : bottomRowMembers;
+      : familyMembers.filter((m) => m.categories?.includes(activeFilter));
 
   const resolvePhoto = (member) => {
     if (member.photo && member.photo.trim() !== '' && !failedPhotos[member.id]) {
@@ -265,7 +264,15 @@ export function FamilyGallery() {
             - Mobile (<768px): 2 columns x 3 rows (all 6 cards fit cleanly on screen)
             - Desktop (>=768px): 3 columns x 2 rows (Row 1: Father, Bride, Mother; Row 2: Dada, Bhabi, Bhaipo)
            ===================================================================== */}
-        <div className="mt-6 sm:mt-9 grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 items-stretch">
+        <div
+          className={`mt-6 sm:mt-9 grid gap-3 sm:gap-6 items-stretch ${
+            filteredMembers.length === 1
+              ? 'max-w-sm mx-auto grid-cols-1'
+              : filteredMembers.length === 2
+              ? 'max-w-3xl mx-auto grid-cols-2'
+              : 'grid-cols-2 md:grid-cols-3'
+          }`}
+        >
           {filteredMembers.map((member) => renderMemberCard(member))}
         </div>
 

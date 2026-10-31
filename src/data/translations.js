@@ -59,22 +59,37 @@ export const translations = {
     },
     countdown: {
       eyebrow: 'Counting Every Blessed Moment',
-      title: 'Until Our Celebration Begins',
+      title: 'Counting down to a beautiful new beginning',
       subtitle:
         'Join us as we count down to the auspicious day in Purba Kalikapur, Trimohini, Hili.',
       days: 'Days',
       hours: 'Hours',
       minutes: 'Minutes',
       seconds: 'Seconds',
-      targetLabel: '30 November 2026 • India Standard Time (IST)',
+      targetLabel: '30 November 2026 • 2:00 PM IST',
       provisionalNote:
-        'Ceremony countdown set to 12:00 PM IST provisionally; exact ceremony timing will be updated upon confirmation.',
-      weddingDayTitle: 'Alhamdulillah — Our Wedding Day Has Arrived!',
+        'Ceremony countdown set to 2:00 PM IST.',
+      weddingDayTitle: 'Today is the day. Please keep us in your prayers.',
       weddingDayMessage:
         'Today we celebrate the union of Shahanaj & Souvik surrounded by the love and prayers of our families.',
-      pastWeddingTitle: 'Our Beautiful Journey Has Begun',
+      pastWeddingTitle: 'Thank you for being part of our beautiful beginning.',
       pastWeddingMessage:
         'Thank you for keeping Shahanaj & Souvik in your heartfelt prayers and warm wishes.',
+    },
+    welcomeScreen: {
+      bismillahArabic: 'بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ',
+      bismillah: 'Bismillahir Rahmanir Rahim',
+      quote: 'A beautiful beginning, blessed with love and prayers.',
+      invitedBy: 'Hosted with love by Nurjjaman Mondal & Sujata Bibi',
+      dateLocation: '30 November 2026 • Purba Kalikapur, Trimohini, Hili',
+      openBtn: 'Open Invitation',
+      skipBtn: 'Skip Intro',
+    },
+    personalMessage: {
+      eyebrow: 'Heartfelt Invitation',
+      bismillah: 'Bismillahir Rahmanir Rahim',
+      body: 'With the blessings of Allah and the love of our families, we warmly invite you to celebrate this beautiful new chapter with us. Your presence and prayers will make our special day even more memorable.',
+      hostsSignoff: 'Nurjjaman Mondal & Sujata Bibi (Parents of Shahanaj)',
     },
     story: {
       eyebrow: 'Two Hearts, One Sacred Bond',
@@ -103,7 +118,8 @@ export const translations = {
       hostsHighlightText:
         'Together with Elder Brother (Dada) Sahin Mondal, Bhabi Surovi Najmin, and little Bhaipo Arhan Mondal, parents Nurjjaman Mondal and Sujata Bibi warmly welcome you to Our Home in Purba Kalikapur, Trimohini, Hili.',
       filterAll: 'All Family',
-      filterParents: 'Parents & Bride',
+      filterParents: 'Parents',
+      filterBride: 'The Bride',
       filterBrotherFamily: 'Dada, Bhabi & Bhaipo',
       viewProfileLabel: 'View family portrait & message',
       closeModalLabel: 'Close family portrait viewer',
@@ -284,12 +300,12 @@ export const translations = {
       copiedBtn: 'Invitation Link Copied!',
     },
     gallery: {
-      eyebrow: 'Cherished Memories Together',
-      title: 'Our Wedding Photo Gallery',
+      eyebrow: 'Cherished Moments Together',
+      title: 'Beautiful Memories',
       subtitle:
         'Special wedding portraits and cherished moments of Shahanaj & Souvik.',
       placeholderNotice:
-        'Click any photograph below to view it in full screen.',
+        'Tap any photograph to open full screen • Swipe left or right on mobile.',
       filterAll: 'All Moments',
       featuredBadge: 'Featured Frame',
       openLightboxLabel: 'View full-size photograph',
@@ -298,6 +314,7 @@ export const translations = {
       lightboxNext: 'Next photograph',
       lightboxCounter: 'Photograph',
       of: 'of',
+      swipeHint: 'Swipe left or right to browse photos',
     },
     venue: {
       eyebrow: 'Destination & Hospitality',
@@ -312,7 +329,7 @@ export const translations = {
       localityTag: 'Purba Kalikapur • Trimohini • Hili',
       datesLabel: 'Celebration Dates',
       datesValue: '28, 29 & 30 November 2026',
-      getDirectionsBtn: 'Get Directions',
+      getDirectionsBtn: 'Open in Google Maps',
       directionsPendingNote:
         'Exact map coordinates and live Google Maps directions will be activated here once verified.',
       mapPlaceholderTitle: 'Interactive Map & Exact Pin Coming Soon',
@@ -336,11 +353,15 @@ export const translations = {
     },
     rsvp: {
       eyebrow: 'Blessings & Attendance',
-      title: 'Share Your Warm Wishes & RSVP',
+      title: 'Send Your Blessings',
       subtitle:
-        'Let us know if you will be joining us in person or send your heartfelt prayers (Dua) for Shahanaj & Souvik.',
-      previewBanner:
-        'Preview Mode: Responses entered below are saved locally in your browser until the family’s online RSVP collection is activated.',
+        'Send a heartfelt prayer (Dua) or let us know if you can join us in person via WhatsApp.',
+      whatsappBanner:
+        'Direct WhatsApp RSVP: Your wishes and attendance details are sent directly on WhatsApp to Wedding Host Nurjjaman Mondal (+91 94741 38682).',
+      quickActionsTitle: 'Quick One-Tap WhatsApp Options',
+      quickBlessingBtn: 'Send a Blessing via WhatsApp',
+      quickRsvpBtn: 'RSVP / Let Us Know If You Can Join',
+      customFormTitle: 'Or Personalize Your RSVP & Message Below',
       nameLabel: 'Your Full Name',
       namePlaceholder: 'Enter your name',
       guestsLabel: 'Number of Guests',
@@ -356,12 +377,22 @@ export const translations = {
       attendingPrayers: 'Sending Blessings & Prayers from Afar',
       messageLabel: 'Your Blessings or Message (Optional)',
       messagePlaceholder: 'Write a warm note or prayer for Shahanaj & Souvik...',
-      submitBtn: 'Record Wishes & Attendance',
-      successTitle: 'JazakAllah Khair — Thank You for Your Warm Wishes!',
+      submitBtn: 'Send Wishes & RSVP on WhatsApp',
+      resendWhatsappBtn: 'Open in WhatsApp Again',
+      successTitle: 'JazakAllah Khair — Opening WhatsApp!',
       successMessage:
-        'Your message for Shahanaj & Souvik has been recorded on this device. We look forward to celebrating with you!',
+        'Your RSVP and warm wishes have been prepared for Nurjjaman Mondal (+91 94741 38682) on WhatsApp. Please tap Send in WhatsApp to complete!',
       resetBtn: 'Edit Response',
       requiredError: 'Please enter your name before submitting.',
+    },
+    closing: {
+      eyebrow: 'With Heartfelt Gratitude',
+      quote: 'Your presence and prayers are the greatest gift we could ask for.',
+      coupleNames: 'Shahanaj & Souvik',
+      hostsLine: 'Nurjjaman Mondal & Sujata Bibi and the Entire Mondal Family',
+      shareBtn: 'Share Invitation',
+      whatsappShareBtn: 'Share on WhatsApp',
+      copiedToast: 'Invitation link copied to clipboard!',
     },
     footer: {
       gratitudeQuote: 'With love and gratitude, Shahanaj & Souvik',
@@ -419,22 +450,37 @@ export const translations = {
     },
     countdown: {
       eyebrow: 'শুভক্ষণের প্রতীক্ষা',
-      title: 'শুভ বিবাহের আর মাত্র বাকি',
+      title: 'একটি সুন্দর নতুন সূচনার ক্ষণগণনা',
       subtitle:
         'পূর্ব কালিকাপুর, ত্রিমোহিনী, হিলিতে আমাদের এই আনন্দঘন দিনের ক্ষণগণনায় শামিল হোন।',
       days: 'দিন',
       hours: 'ঘণ্টা',
       minutes: 'মিনিট',
       seconds: 'সেকেন্ড',
-      targetLabel: '৩০ নভেম্বর ২০২৬ • ভারতীয় প্রমাণ সময় (IST)',
+      targetLabel: '৩০ নভেম্বর ২০২৬ • দুপুর ২:০০ ঘটিকা (IST)',
       provisionalNote:
-        'ক্ষণগণনাটি আপাতত দুপুর ১২:০০ ঘটিকা (IST) অনুযায়ী নির্ধারণ করা হয়েছে; চূড়ান্ত সময় নির্ধারিত হলে তা হালনাগাদ করা হবে।',
-      weddingDayTitle: 'আলহামদুলিল্লাহ — আমাদের শুভ বিবাহের দিন আজ উপস্থিত!',
+        'ক্ষণগণনাটি দুপুর ২:০০ ঘটিকা (IST) অনুযায়ী নির্ধারিত।',
+      weddingDayTitle: 'আজ সেই শুভ দিন। আমাদের জন্য আপনাদের আন্তরিক দোয়া কামনা করি।',
       weddingDayMessage:
         'পরিবারের দোয়া ও ভালোবাসায় আজ আমরা শাহানাজ ও সৌভিকের শুভ পরিণয় উদযাপন করছি।',
-      pastWeddingTitle: 'আমাদের সুন্দর পথচলা শুরু হয়েছে',
+      pastWeddingTitle: 'আমাদের এই সুন্দর সূচনার অংশীদার হওয়ার জন্য আপনাদের আন্তরিক ধন্যবাদ।',
       pastWeddingMessage:
         'শাহানাজ ও সৌভিককে আপনাদের আন্তরিক দোয়া ও ভালোবাসায় রাখার জন্য অশেষ কৃতজ্ঞতা।',
+    },
+    welcomeScreen: {
+      bismillahArabic: 'بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ',
+      bismillah: 'বিসমিল্লাহির রাহমানির রাহিম',
+      quote: 'ভালোবাসা ও দোয়ার আশীর্বাদে শুরু হোক নতুন এক পথচলা।',
+      invitedBy: 'সাদর আমন্ত্রণে: নূরজ্জামান মণ্ডল ও সুজাতা বিবি',
+      dateLocation: '৩০ নভেম্বর ২০২৬ • পূর্ব কালিকাপুর, ত্রিমোহিনী, হিলি',
+      openBtn: 'আমন্ত্রণপত্র খুলুন',
+      skipBtn: 'সরাসরি প্রবেশ করুন',
+    },
+    personalMessage: {
+      eyebrow: 'আন্তরিক আমন্ত্রণ',
+      bismillah: 'বিসমিল্লাহির রাহমানির রাহিম',
+      body: 'আল্লাহর অশেষ রহমত ও আমাদের পরিবারের ভালোবাসায় শুরু হতে যাচ্ছে জীবনের নতুন এক অধ্যায়। আপনাদের উপস্থিতি ও দোয়া আমাদের এই বিশেষ দিনকে আরও আনন্দময় করে তুলবে।',
+      hostsSignoff: 'নূরজ্জামান মণ্ডল ও সুজাতা বিবি (শাহানাজের পিতা ও মাতা)',
     },
     story: {
       eyebrow: 'দুটি হৃদয়, এক পবিত্র বন্ধন',
@@ -463,7 +509,8 @@ export const translations = {
       hostsHighlightText:
         'পিতা নূরজ্জামান মণ্ডল ও মাতা সুজাতা বিবি-র সাথে বড় ভাই (দাদা) সাহিন মণ্ডল, ভাবি সুরভী নাজমিন এবং ছোট্ট ভাইপো আরহান মণ্ডল — পূর্ব কালিকাপুর, ত্রিমোহিনী, হিলির নিজ বাসস্থানে আপনাদের সকলকে সপরিবারে সাদর আমন্ত্রণ জানাচ্ছেন।',
       filterAll: 'সকল সদস্য',
-      filterParents: 'পিতা-মাতা ও কনে',
+      filterParents: 'পিতা ও মাতা',
+      filterBride: 'কনে (শাহানাজ)',
       filterBrotherFamily: 'দাদা, ভাবি ও ভাইপো',
       viewProfileLabel: 'পরিবারের সদস্যের ছবি ও বার্তা দেখুন',
       closeModalLabel: 'উইন্ডো বন্ধ করুন',
@@ -645,11 +692,11 @@ export const translations = {
     },
     gallery: {
       eyebrow: 'ভালোবাসা ও স্মৃতির অ্যালবাম',
-      title: 'আমাদের বিবাহের ফটো অ্যালবাম',
+      title: 'মধুর স্মৃতিসমূহ',
       subtitle:
         'শাহানাজ ও সৌভিকের বিবাহের বিশেষ মুহূর্ত ও আলোকচিত্র।',
       placeholderNotice:
-        'যেকোনো ছবির ওপর ক্লিক করে পূর্ণ পর্দায় (Full-screen) দেখুন।',
+        'যেকোনো ছবির ওপর ট্যাপ করে পূর্ণ পর্দায় দেখুন • মোবাইলে ডানে বা বামে সোয়াইপ করুন।',
       filterAll: 'সকল মুহূর্ত',
       featuredBadge: 'বিশেষ আলোকচিত্র',
       openLightboxLabel: 'বড় করে ছবি দেখুন',
@@ -658,6 +705,7 @@ export const translations = {
       lightboxNext: 'পরবর্তী ছবি',
       lightboxCounter: 'আলোকচিত্র',
       of: '/',
+      swipeHint: 'পরবর্তী ছবি দেখতে ডানে বা বামে সোয়াইপ করুন',
     },
     venue: {
       eyebrow: 'ঠিকানা ও আতিথেয়তা',
@@ -672,7 +720,7 @@ export const translations = {
       localityTag: 'পূর্ব কালিকাপুর • ত্রিমোহিনী • হিলি',
       datesLabel: 'অনুষ্ঠানের তারিখ',
       datesValue: '২৮, ২৯ ও ৩০ নভেম্বর ২০২৬',
-      getDirectionsBtn: 'দিকনির্দেশনা দেখুন',
+      getDirectionsBtn: 'গুগল ম্যাপসে খুলুন',
       directionsPendingNote:
         'যাচাইকৃত গুগল ম্যাপস লোকেশন সংযোজিত হলেই এখান থেকে সরাসরি দিকনির্দেশনা দেখা যাবে।',
       mapPlaceholderTitle: 'গুগল ম্যাপস লোকেশন শীঘ্রই যুক্ত হবে',
@@ -696,11 +744,15 @@ export const translations = {
     },
     rsvp: {
       eyebrow: 'শুভেচ্ছা ও উপস্থিতি নিশ্চিতকরণ',
-      title: 'আপনার দোয়া ও উপস্থিতির বার্তা জানান',
+      title: 'আপনার দোয়া ও শুভেচ্ছা পাঠান',
       subtitle:
-        'আপনি সশরীরে উপস্থিত থাকছেন কি না তা আমাদের জানান অথবা শাহানাজ ও সৌভিকের জন্য আপনার আন্তরিক দোয়া ও শুভেচ্ছা বার্তা লিখে পাঠান।',
-      previewBanner:
-        'প্রিভিউ মোড: অনলাইন ফর্ম চূড়ান্ত না হওয়া পর্যন্ত আপনার পাঠানো বার্তা আপনার ব্রাউজারেই সুরক্ষিত থাকবে।',
+        'শাহানাজ ও সৌভিকের জন্য আপনার আন্তরিক দোয়া পাঠান অথবা আপনি সশরীরে উপস্থিত থাকছেন কি না তা হোয়াটসঅ্যাপে জানান।',
+      whatsappBanner:
+        'সরাসরি হোয়াটসঅ্যাপ বার্তা: আপনার শুভেচ্ছা ও উপস্থিতির তথ্য সরাসরি কনের পিতা নূরজ্জামান মণ্ডলের হোয়াটসঅ্যাপে (+91 94741 38682) পৌঁছে যাবে।',
+      quickActionsTitle: 'এক ট্যাপে হোয়াটসঅ্যাপে পাঠান',
+      quickBlessingBtn: 'হোয়াটসঅ্যাপে দোয়া ও শুভেচ্ছা পাঠান',
+      quickRsvpBtn: 'উপস্থিতি নিশ্চিত করুন (RSVP)',
+      customFormTitle: 'অথবা নিচে আপনার নাম ও বার্তা লিখে পাঠান',
       nameLabel: 'আপনার সম্পূর্ণ নাম',
       namePlaceholder: 'আপনার নাম লিখুন',
       guestsLabel: 'অতিথির সংখ্যা',
@@ -716,12 +768,22 @@ export const translations = {
       attendingPrayers: 'দূর থেকে আন্তরিক দোয়া ও শুভেচ্ছা জানাচ্ছি',
       messageLabel: 'আপনার দোয়া বা শুভেচ্ছা বার্তা (ঐচ্ছিক)',
       messagePlaceholder: 'শাহানাজ ও সৌভিকের নতুন জীবনের জন্য আপনার দোয়া বা বার্তা লিখুন...',
-      submitBtn: 'শুভেচ্ছা ও উপস্থিতি সংরক্ষণ করুন',
-      successTitle: 'জাযাকাল্লাহু খাইরান — আপনার আন্তরিক শুভেচ্ছার জন্য ধন্যবাদ!',
+      submitBtn: 'হোয়াটসঅ্যাপে শুভেচ্ছা ও উপস্থিতি পাঠান',
+      resendWhatsappBtn: 'আবার হোয়াটসঅ্যাপ খুলুন',
+      successTitle: 'জাযাকাল্লাহু খাইরান — হোয়াটসঅ্যাপ খোলা হচ্ছে!',
       successMessage:
-        'শাহানাজ ও সৌভিকের জন্য আপনার শুভেচ্ছা বার্তাটি এই ডিভাইসে সংরক্ষিত হয়েছে। অনুষ্ঠানে আপনার সাদর উপস্থিতি কামনা করি!',
+        'আপনার শুভেচ্ছা বার্তাটি নূরজ্জামান মণ্ডলের হোয়াটসঅ্যাপে (+91 94741 38682) পাঠানোর জন্য প্রস্তুত হয়েছে। হোয়াটসঅ্যাপে Send বাটনে ক্লিক করে বার্তাটি পাঠিয়ে দিন!',
       resetBtn: 'বার্তা সম্পাদনা করুন',
       requiredError: 'অনুগ্রহ করে জমা দেওয়ার আগে আপনার নাম লিখুন।',
+    },
+    closing: {
+      eyebrow: 'আন্তরিক কৃতজ্ঞতা ও ভালোবাসা',
+      quote: 'আপনাদের উপস্থিতি ও দোয়াই আমাদের জন্য সবচেয়ে বড় উপহার।',
+      coupleNames: 'শাহানাজ ও সৌভিক',
+      hostsLine: 'নূরজ্জামান মণ্ডল ও সুজাতা বিবি এবং সমগ্র মণ্ডল পরিবার',
+      shareBtn: 'আমন্ত্রণপত্র শেয়ার করুন',
+      whatsappShareBtn: 'হোয়াটসঅ্যাপে শেয়ার করুন',
+      copiedToast: 'আমন্ত্রণ লিংক কপি হয়েছে!',
     },
     footer: {
       gratitudeQuote: 'ভালোবাসা ও কৃতজ্ঞতায়, শাহানাজ ও সৌভিক',

@@ -137,7 +137,7 @@ export function WeddingEvents() {
   return (
     <section
       id="events"
-      className="relative py-20 sm:py-28 bg-gradient-to-b from-ivory via-champagne/35 to-ivory bg-islamic-pattern"
+      className="relative py-12 sm:py-20 bg-gradient-to-b from-ivory via-champagne/35 to-ivory bg-islamic-pattern overflow-hidden"
     >
       <div
         ref={revealRef}
@@ -147,31 +147,183 @@ export function WeddingEvents() {
       >
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto">
-          <div className="flex justify-center mb-3">
-            <OrnamentalDivider variant="crescent" className="w-60 sm:w-72 h-8" />
+          <div className="flex justify-center mb-2">
+            <OrnamentalDivider variant="crescent" className="w-48 sm:w-64 h-6 sm:h-7" />
           </div>
 
-          <p className="text-xs sm:text-sm uppercase tracking-[0.22em] text-gold-dark font-semibold">
+          <p className="text-[11px] sm:text-xs uppercase tracking-[0.2em] text-gold-dark font-semibold">
             {t.events.eyebrow}
           </p>
 
-          <h2 className="mt-2 font-heading text-3xl sm:text-5xl font-bold text-burgundy">
+          <h2 className="mt-1 font-heading text-[clamp(1.75rem,5vw,3rem)] font-bold text-burgundy">
             {t.events.title}
           </h2>
 
-          <p className="mt-3 text-sm sm:text-base text-ink/80 leading-relaxed">
+          <p className="mt-2 text-xs sm:text-base text-ink/80 leading-relaxed">
             {t.events.subtitle}
           </p>
 
           {/* Interactive Click Hint Pill */}
-          <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-champagne/55 border border-gold/65 text-xs sm:text-sm font-medium text-burgundy shadow-sm">
-            <Sparkles className="w-4 h-4 text-gold-dark shrink-0 animate-pulse" aria-hidden="true" />
+          <div className="mt-3.5 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-champagne/55 border border-gold/65 text-xs sm:text-sm font-medium text-burgundy shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-gold-dark shrink-0 animate-pulse" aria-hidden="true" />
             <span>{t.events.interactiveHint}</span>
           </div>
         </div>
 
-        {/* Three Clickable Luxury Stationery Event Cards */}
-        <div className="mt-8 sm:mt-10 grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6 items-stretch">
+        {/* =====================================================================
+            MOBILE-FIRST VERTICAL WEDDING JOURNEY TIMELINE (<1024px)
+            Clean vertical timeline with step medallions — no tiny side-by-side cards
+           ===================================================================== */}
+        <div className="mt-8 lg:hidden relative pl-6 sm:pl-8 border-l-2 border-gold/75 space-y-6 max-w-xl mx-auto">
+          {weddingConfig.events.map((eventItem, index) => {
+            const eventCopy = t.events.items[eventItem.id];
+            const style = getCardStyle(eventItem.theme);
+            const isDark = Boolean(style.isDark);
+            const timeText = eventItem.confirmedTime
+              ? eventItem.confirmedTime[language]
+              : t.events.timeToBeAnnounced;
+
+            return (
+              <div key={`mobile-journey-${eventItem.id}`} className="relative">
+                {/* Vertical Journey Step Number Medallion */}
+                <span
+                  className={`absolute -left-[37px] sm:-left-[45px] top-4 w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center font-heading text-xs sm:text-sm font-bold shadow-md ${
+                    isDark
+                      ? 'bg-gold text-burgundy-deep border-burgundy'
+                      : 'bg-burgundy text-gold-light border-gold'
+                  }`}
+                  aria-hidden="true"
+                >
+                  {index + 1}
+                </span>
+
+                <article
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => openEventModal(index)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      openEventModal(index);
+                    }
+                  }}
+                  aria-label={`${eventCopy.name} — ${t.events.clickToExplore}`}
+                  className={`cursor-pointer relative rounded-2xl border p-4 sm:p-5 shadow-royal transition-all overflow-hidden focus:outline-none focus-visible:ring-4 focus-visible:ring-gold ${style.wrapper}`}
+                >
+                  <div className="flex items-start gap-3.5">
+                    <div className="shrink-0">
+                      <EventIllustration
+                        type={eventItem.iconType}
+                        className="w-12 h-12 sm:w-14 sm:h-14"
+                      />
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                      <span
+                        className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-medium border ${style.badge}`}
+                      >
+                        <Sparkles className="w-2.5 h-2.5 shrink-0" aria-hidden="true" />
+                        <span className="truncate">{eventCopy.badge}</span>
+                      </span>
+
+                      <h3
+                        className={`mt-1 font-heading text-xl sm:text-2xl font-bold leading-snug ${style.title}`}
+                      >
+                        {eventCopy.name}
+                      </h3>
+
+                      <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
+                        <span
+                          className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md border text-xs font-semibold ${
+                            isDark
+                              ? 'bg-ivory/10 border-gold/50 text-ivory'
+                              : 'bg-ivory border-gold/50 text-burgundy'
+                          }`}
+                        >
+                          <Calendar className="w-3 h-3 text-gold shrink-0" aria-hidden="true" />
+                          {eventCopy.date}
+                        </span>
+                        <span
+                          className={`px-2 py-0.5 rounded-md text-[11px] font-medium ${style.dayPill}`}
+                        >
+                          {eventCopy.day}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p
+                    className={`mt-3 text-xs sm:text-sm leading-relaxed ${
+                      isDark ? 'text-champagne/95' : 'text-ink/85'
+                    }`}
+                  >
+                    {eventCopy.description}
+                  </p>
+
+                  <div
+                    className={`mt-3.5 pt-3 border-t ${style.accentBorder} space-y-2`}
+                  >
+                    <div
+                      className={`flex items-center gap-2 px-3 py-2 rounded-xl ${style.footerBg}`}
+                    >
+                      <Clock
+                        className={`w-4 h-4 shrink-0 ${
+                          isDark ? 'text-gold-light' : 'text-burgundy'
+                        }`}
+                        aria-hidden="true"
+                      />
+                      <span
+                        className={`text-xs sm:text-sm font-semibold ${
+                          isDark ? 'text-ivory' : 'text-burgundy'
+                        }`}
+                      >
+                        {timeText}
+                      </span>
+                    </div>
+
+                    <div
+                      className={`flex items-center gap-2 px-3 py-2 rounded-xl ${style.footerBg}`}
+                    >
+                      <MapPin
+                        className={`w-4 h-4 shrink-0 ${
+                          isDark ? 'text-gold-light' : 'text-burgundy'
+                        }`}
+                        aria-hidden="true"
+                      />
+                      <span
+                        className={`text-xs sm:text-sm ${
+                          isDark ? 'text-champagne' : 'text-ink/85'
+                        }`}
+                      >
+                        <strong
+                          className={isDark ? 'text-gold-light' : 'text-burgundy'}
+                        >
+                          {t.events.venueLabel}:
+                        </strong>{' '}
+                        {t.events.venueValue}
+                      </span>
+                    </div>
+
+                    <div className="pt-1">
+                      <span
+                        className={`w-full min-h-[42px] inline-flex items-center justify-center gap-2 py-2 px-4 rounded-full text-xs sm:text-sm font-medium border shadow-sm ${style.ctaBtn}`}
+                      >
+                        <BookOpen className="w-3.5 h-3.5" aria-hidden="true" />
+                        <span>{t.events.clickToExplore}</span>
+                        <span aria-hidden="true">✦</span>
+                      </span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* =====================================================================
+            DESKTOP THREE-COLUMN LUXURY STATIONERY CARDS (>=1024px)
+           ===================================================================== */}
+        <div className="hidden lg:grid mt-10 grid-cols-3 gap-6 items-stretch">
           {weddingConfig.events.map((eventItem, index) => {
             const eventCopy = t.events.items[eventItem.id];
             const style = getCardStyle(eventItem.theme);

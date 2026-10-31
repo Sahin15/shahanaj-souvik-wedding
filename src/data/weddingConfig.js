@@ -171,7 +171,26 @@ export const weddingConfig = {
 
   rsvp: {
     enabled: true,
+    /**
+     * Family Contact WhatsApp Number (International format without '+' or spaces)
+     * Configured for: Nurjjaman Mondal (Father of the Bride) — 9474138682
+     */
+    whatsappNumber: '919474138682',
+    whatsappDisplay: '+91 94741 38682',
+    recipientName: {
+      en: 'Nurjjaman Mondal (Father of the Bride)',
+      bn: 'নূরজ্জামান মণ্ডল (কনের পিতা)',
+    },
     endpointUrl: '',
+  },
+
+  /**
+   * Post-Wedding Memory Mode Configuration:
+   * Set `enabled: true` after 30 November 2026 to force the post-wedding thank-you
+   * and digital memory book experience (also activates automatically after the wedding date).
+   */
+  postWeddingMode: {
+    enabled: false,
   },
 };
 

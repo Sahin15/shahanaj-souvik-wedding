@@ -86,7 +86,7 @@ export const familyMembers = [
   },
   {
     id: 'shahanaj-bride',
-    categories: ['parents'],
+    categories: ['bride'],
     tier: 'top',
     isHost: true,
     isBride: true,

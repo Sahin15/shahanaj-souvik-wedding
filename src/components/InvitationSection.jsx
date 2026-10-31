@@ -115,10 +115,10 @@ export function InvitationSection() {
 
   const whatsappShareUrl = () => {
     const mapLine = weddingConfig.venue.directionsUrl
-      ? `\n🗺️ Google Maps: ${weddingConfig.venue.directionsUrl}`
+      ? `\n• *Google Maps:* ${weddingConfig.venue.directionsUrl}`
       : '';
-    const text = `${t.invitation.paragraph1}\n\n📅 ${t.invitation.dateHighlight}\n📍 ${t.invitation.venueHighlight}${mapLine}\n✨ ${t.invitation.hostsLabel}: ${t.invitation.hostsNames}\n\n${window.location.href}`;
-    return `https://wa.me/?text=${encodeURIComponent(text)}`;
+    const text = `*${t.invitation.title}*\n\n${t.invitation.paragraph1}\n\n• *Date:* ${t.invitation.dateHighlight}\n• *Venue:* ${t.invitation.venueHighlight}${mapLine}\n• *Hosted by:* ${t.invitation.hostsNames}\n\n${window.location.href}`;
+    return `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
   };
 
   const googleCalendarUrl = () => {
